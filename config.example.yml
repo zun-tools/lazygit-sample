@@ -1,0 +1,21 @@
+customCommands:
+  - key: 'X'
+    context: 'global'
+    description: 'テストを走らせる'
+    command: 'npm test'
+    output: popup
+  - key: 'Y'
+    context: 'files'
+    description: '種類つきでコミット'
+    prompts:
+      - type: 'menu'
+        title: '種類は？'
+        key: 'Type'
+        options:
+          - value: 'fix'
+          - value: 'feat'
+          - value: 'style'
+      - type: 'input'
+        title: 'メッセージ'
+        key: 'Msg'
+    command: 'git commit -m "{{.Form.Type}}: {{.Form.Msg}}"'
